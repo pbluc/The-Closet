@@ -26,42 +26,48 @@ A virtual closet app for your real-life wardrobe, with tools and features to man
 
 **Required Must-have Stories**
 
+#### Looks
 * Create magazine-style outfits on a free-form canvas by pinching and dragging clothing items to create a new look
 * Pinch an item to resize it
 * Use shuffle feature to shuffle your closet like a deck of cards and reveal new outfit ideas in your closet
-* Add, edit, delete or re-order outfit and clothing category names and folder names
-* Add photos of your own clothese from the built-camera, your own photo library, or using copy-and-paste
+* Create variants on an existing look by cloning it and then making changes to the cloned outfit
 * Remove the background from clothing images for perfect layering in outfits
 * Edit the background even after you first import an item
+#### Looks and Closet
+* Add, edit, delete or re-order outfit and clothing category names and folder names
 * Two-level closet category system with folders and subcategories
 * See all items in a folder at once
-* Create variants on an existing look by cloning it and then making changes to the cloned outfit
 * Select multiple closet items to move them to a new category.
+* Add photos of your own clothese from the built-camera, your own photo library, or using copy-and-paste
 * Track whether an item is clean, in the laundry, at the cleaners, lent out, or a wishlist item
 * Quickly see a list of all outfits
+#### Calendar
 * Add multiple outfits or clothing items to a single date in calendar
 * Re-order items within a day
 * Generate worn history log for clothing and outfits
 * Track what you wore through calendar
+#### Statistics
 * See the total number of items in your closet
 * A color bar to break down your closet by color - can tap on a color to see individual shades
 * Find out which items in your closet are under-utilized or may need to be donated
 * See items you haven't worn lately to freshen up your wardrobe without going shopping
 * See which outfits and clothing items you wear the most - and which ones you rarely wear.
 * See the items you've added to your closet most recently
+#### Size Tracker
 * Save your body measurements e.g. waist, inseam, hips, etc
 * Save clothing sizes by type e.g. tops, dresses, shoes
 * Create, edit and rename body measurements
 
 
 **Optional Nice-to-have Stories**
-
 * Add unlimited clothing, accessories and inspiration to your outfits
 * Create mini mood boards by saving inspiration photos in your outfit
 * Re-order outfit thumbnails in a category
+* Save notes on upcoming parties and events, or remember why you wore an outfit in the past
+#### Social Media and Sharing
 * Share outfits with friends via email, text message, Facebook, Twitter or Pinterest
 * Use Wifi Share to instantly transit mutliple outfits to another device
-* Save notes on upcoming parties and events, or remember why you wore an outfit in the past
+#### Packing Lists
 * Create a visual packing list for upcoming trips by organizing outfits and clothing items into packing lists
 * Customize title and notes fields in packing lists
 * Re-order your packing lists
