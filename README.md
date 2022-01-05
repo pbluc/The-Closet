@@ -26,27 +26,19 @@ A virtual closet app for your real-life wardrobe, with tools and features to man
 
 **Required Must-have Stories**
 
-* Create magazine-style outfits on a free-form canvas by pinching and drag clothing items to create the perfect look
-* Use shuffle feature to shuffle your closet like a deck of cards and reveal new outfit ideas hiding in your closet
-* See a list of dates you've worn an outfit
-* Add, edit, delete or re-order outfit and clothing category names and folder names
+* Create magazine-style outfits on a free-form canvas by pinching and dragging clothing items to create a new look
 * Pinch an item to resize it
+* Use shuffle feature to shuffle your closet like a deck of cards and reveal new outfit ideas in your closet
+* Add, edit, delete or re-order outfit and clothing category names and folder names
 * Add photos of your own clothese from the built-camera, your own photo library, or using copy-and-paste
 * Remove the background from clothing images for perfect layering in outfits
 * Edit the background even after you first import an item
-* Two-level closet category system with folers and subcategories
+* Two-level closet category system with folders and subcategories
 * See all items in a folder at once
+* Create variants on an existing look by cloning it and then making changes to the cloned outfit
+* Select multiple closet items to move them to a new category.
 * Track whether an item is clean, in the laundry, at the cleaners, lent out, or a wishlist item
 * Quickly see a list of all outfits
-* Create a visual packing list for upcoming trips by organizing outfits and clothing items into packing lists
-* Customize title and notes fields in packing lists
-* Re-order your packing lists
-* Keep an archive of packing lists
-* Use the Packing Checklist feature to check off items as you pack them
-* Add an outfit to a packing list, and its clothing items will automatically be added to the list
-* Add individual clothing items to packing list
-* Share clothing or outfits directly from packing list by multi-selecting to send several items at once via email or social media
-* Assign an imahe of your destination to each packing list
 * Add multiple outfits or clothing items to a single date in calendar
 * Re-order items within a day
 * Generate worn history log for clothing and outfits
@@ -66,12 +58,19 @@ A virtual closet app for your real-life wardrobe, with tools and features to man
 
 * Add unlimited clothing, accessories and inspiration to your outfits
 * Create mini mood boards by saving inspiration photos in your outfit
-* Create variants on an existing look by cloning it and then making changes to the cloned outfit
-* Select multiple closet items to move them to a new category.
 * Re-order outfit thumbnails in a category
 * Share outfits with friends via email, text message, Facebook, Twitter or Pinterest
 * Use Wifi Share to instantly transit mutliple outfits to another device
 * Save notes on upcoming parties and events, or remember why you wore an outfit in the past
+* Create a visual packing list for upcoming trips by organizing outfits and clothing items into packing lists
+* Customize title and notes fields in packing lists
+* Re-order your packing lists
+* Keep an archive of packing lists
+* Check off items as you pack them
+* Add an outfit to a packing list, and its clothing items will automatically be added to the list
+* Add individual clothing items to packing list
+* Share clothing or outfits directly from packing list by multi-selecting to send several items at once via email or social media
+* Assign an image of your destination to each packing list
 
 ### 2. Screen Archetypes
 
