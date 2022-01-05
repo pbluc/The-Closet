@@ -33,7 +33,7 @@ A virtual closet app for your real-life wardrobe, with tools and features to man
 * Create variants on an existing look by cloning it and then making changes to the cloned outfit
 * Remove the background from clothing images for perfect layering in outfits
 * Edit the background even after you first import an item
-#### Looks and Closet
+#### Closet
 * Add, edit, delete or re-order outfit and clothing category names and folder names
 * Two-level closet category system with folders and subcategories
 * See all items in a folder at once
