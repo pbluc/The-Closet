@@ -26,13 +26,6 @@ A virtual closet app for your real-life wardrobe, with tools and features to man
 
 **Required Must-have Stories**
 
-#### Looks
-* Create magazine-style outfits on a free-form canvas by pinching and dragging clothing items to create a new look
-* Pinch an item to resize it
-* Use shuffle feature to shuffle your closet like a deck of cards and reveal new outfit ideas in your closet
-* Create variants on an existing look by cloning it and then making changes to the cloned outfit
-* Remove the background from clothing images for perfect layering in outfits
-* Edit the background even after you first import an item
 #### Closet
 * Add, edit, delete or re-order outfit and clothing category names and folder names
 * Two-level closet category system with folders and subcategories
@@ -41,6 +34,13 @@ A virtual closet app for your real-life wardrobe, with tools and features to man
 * Add photos of your own clothese from the built-camera, your own photo library, or using copy-and-paste
 * Track whether an item is clean, in the laundry, at the cleaners, lent out, or a wishlist item
 * Quickly see a list of all outfits
+#### Looks
+* Create magazine-style outfits on a free-form canvas by pinching and dragging clothing items to create a new look
+* Pinch an item to resize it
+* Use shuffle feature to shuffle your closet like a deck of cards and reveal new outfit ideas in your closet
+* Create variants on an existing look by cloning it and then making changes to the cloned outfit
+* Remove the background from clothing images for perfect layering in outfits
+* Edit the background even after you first import an item
 #### Calendar
 * Add multiple outfits or clothing items to a single date in calendar
 * Re-order items within a day
@@ -80,12 +80,13 @@ A virtual closet app for your real-life wardrobe, with tools and features to man
 
 ### 2. Screen Archetypes
 
-* [list first screen here]
+* Login Screen
    * [list associated required story here]
    * ...
-* [list second screen here]
+* Create Account Screen
    * [list associated required story here]
    * ...
+* 
 
 ### 3. Navigation
 
