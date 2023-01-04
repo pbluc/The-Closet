@@ -25,85 +25,145 @@ A virtual closet app for your real-life wardrobe, with tools and features to man
 ### 1. User Stories (Required and Optional)
 
 **Required Must-have Stories**
-
+* User can login and logout
+* User can create a new account
 #### Closet
-* Add, edit, delete or re-order outfit and clothing category names and folder names
-* Two-level closet category system with folders and subcategories
-* See all items in a folder at once
-* Select multiple closet items to move them to a new category.
-* Add photos of your own clothese from the built-camera, your own photo library, or using copy-and-paste
-* Track whether an item is clean, in the laundry, at the cleaners, lent out, or a wishlist item
-* Quickly see a list of all outfits
-#### Looks
-* Create magazine-style outfits on a free-form canvas by pinching and dragging clothing items to create a new look
-* Pinch an item to resize it
-* Use shuffle feature to shuffle your closet like a deck of cards and reveal new outfit ideas in your closet
-* Create variants on an existing look by cloning it and then making changes to the cloned outfit
-* Remove the background from clothing images for perfect layering in outfits
-* Edit the background even after you first import an item
+* User can add and delete closet items, outfits, and folders
+* User can edit outfits and folder names
+* User can see all items in a category or folder at once
+* User can select multiple closet items to move to a new category
+* User can select multiple outfits in a folder to move to a new folder
+* User can add photos of their own clothes from the built-in camera or photo library
+* User can track whether an item is clean in the laundry, at the cleaners, lent out, or a wishlist item
+* User can tap on a closet item to zoom in on its full view
+#### Outfits
+* User can remove the background from clothing images upon import for perfect layering in outfits
+* User can create magazine-style outfits on a free-form canvas by pinching and dragging clothing items to create a new outfit
+    * User can pinch an item to resize it
+    * User can drag an item to move across canvas and reposition
+* User can see if an outfit they're putting together has been repeated
+* User can use the shuffle feature to shuffle their closet like a deck of cards and reveal new outfit ideas in your closet
+* User can create variants on an existing outfit by cloning it and then making changes to the cloned outfit
+* User can create mini mood boards by saving inspiration photos in their outfit
+* User can save notes to outfits on upcoming parties and events, or remember why they wore an outfit in the past
 #### Calendar
-* Add multiple outfits or clothing items to a single date in calendar
-* Re-order items within a day
-* Generate worn history log for clothing and outfits
-* Track what you wore through calendar
-#### Statistics
-* See the total number of items in your closet
-* A color bar to break down your closet by color - can tap on a color to see individual shades
-* Find out which items in your closet are under-utilized or may need to be donated
-* See items you haven't worn lately to freshen up your wardrobe without going shopping
-* See which outfits and clothing items you wear the most - and which ones you rarely wear.
-* See the items you've added to your closet most recently
+* User can add multiple outfits or clothing items to a single date in calendar
+* User can re-order items within a day
+* User can track what they wore through calendar
+* User can switch from a monthly to weekly or daily overview of outfit(s)
+* User can view past outfits worn all at once
 #### Size Tracker
-* Save your body measurements e.g. waist, inseam, hips, etc
-* Save clothing sizes by type e.g. tops, dresses, shoes
-* Create, edit and rename body measurements
+* User can save their body measurements e.g. waist, inseam, hips, etc
+* User can edit their body measurements
+#### Packing Lists
+* User can create a visual packing list for upcoming trips by organizing outfits and clothing items into packing lists
+* User can add, delete and rename packing lists
+* User can delete items from packing lists
+* User can check off items as they pack them
+* User can add an outfit to a packing list, and its clothing items will automatically be added to the list
+* User can add individual clothing items to packing list
 
 
 **Optional Nice-to-have Stories**
-* Add unlimited clothing, accessories and inspiration to your outfits
-* Create mini mood boards by saving inspiration photos in your outfit
-* Re-order outfit thumbnails in a category
-* Save notes on upcoming parties and events, or remember why you wore an outfit in the past
+* User can generate a worn history log for clothing and outfits
 #### Social Media and Sharing
-* Share outfits with friends via email, text message, Facebook, Twitter or Pinterest
-* Use Wifi Share to instantly transit mutliple outfits to another device
+* User can share outfits with friends via email, text message, Facebook, Twitter or Pinterest
+* User can use Wifi Share to instantly transit mutliple outfits to another device
 #### Packing Lists
-* Create a visual packing list for upcoming trips by organizing outfits and clothing items into packing lists
-* Customize title and notes fields in packing lists
-* Re-order your packing lists
-* Keep an archive of packing lists
-* Check off items as you pack them
-* Add an outfit to a packing list, and its clothing items will automatically be added to the list
-* Add individual clothing items to packing list
-* Share clothing or outfits directly from packing list by multi-selecting to send several items at once via email or social media
-* Assign an image of your destination to each packing list
+* User can re-order their packing lists
+* User can keep an archive of packing lists
+* User can customize notes fields in packing lists
+* User can share clothing or outfits directly from packing list by multi-selecting to send several items at once via email or social media
+* User can assign an image of their destination to each packing list
+#### Statistics
+* User can see the total number of items in their closet
+* User can find out which items in their closet are under-utilized or may need to be donated
+* User can see items they haven't worn lately to freshen up their wardrobe without going shopping
+* User can see which outfits and clothing items they wear the most - and which ones they rarely wear.
+* User can see the items they've added to their closet most recently
+* A color bar to break down the user's closet by color - can tap on a color to see individual shades
 
 ### 2. Screen Archetypes
-
 * Login Screen
-   * [list associated required story here]
-   * ...
+   * User can login/logout
 * Create Account Screen
-   * [list associated required story here]
-   * ...
-* 
+   * User can create a new account
+* Closet Screen (Home/Main Screen)
+    * User can add and delete closet items, outfits, and folders
+    * User can see all items in a category or folder at once
+    * User can select multiple closet items to move to a new category
+    * User can add photos of their own clothes from the built-in camera or photo library
+    * User can track whether an item is clean in the laundry, at the cleaners, lent out, or a wishlist item
+    * User can tap on a closet item to zoom in on its full view
+* Import Closet Item Screen
+    * User can remove the background from clothing images upon import for perfect layering in outfits
+* Outfits Screen
+    * User can add and delete closet items, outfits, and folders
+    * User can edit outfits and folder names
+    * User can see all items in a category or folder at once
+    * User can select multiple outfits in a folder to move to a new folder
+    * User can create variants on an existing outfit by cloning it and then making changes to the cloned outfit
+* Edit Outfit Screen
+    * User can create magazine-style outfits on a free-form canvas by pinching and dragging clothing items to create a new outfit
+        * User can pinch an item to resize it
+        * User can drag an item to move across canvas and reposition
+    * User can use the shuffle feature to shuffle their closet like a deck of cards and reveal new outfit ideas in your closet
+    * User can create mini mood boards by saving inspiration photos in their outfit
+    * User can save notes to outfits on upcoming parties and events, or remember why they wore an outfit in the past
+    * User can see if an outfit they’re putting together has been repeated
+* Packing Lists Screen
+    * User can create a visual packing list for upcoming trips by organizing outfits and clothing items into packing lists
+    * User can add, delete and rename packing lists
+    * User can delete items from packing lists
+    * User can check off items as they pack them
+    * User can add an outfit to a packing list, and its clothing items will automatically be added to the list
+    * User can add individual clothing items to packing list
+* Calendar Screen
+    * User can add multiple outfits or clothing items to a single date in calendar
+    * User can re-order items within a day
+    * User can switch from a monthly to weekly or daily overview of outfit(s)
+    * User can view past outfits worn all at once
+* Measurements Screen
+    * User can save their body measurements e.g. waist, inseam, hips, etc
+    * User can edit their body measurements
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
-
-* [fill out your first tab]
-* [fill out your second tab]
-* [fill out your third tab]
+* Closet
+    * Closet Screen (Home/Main Screen)
+        * Bottoms (Skirts, Shorts, Pants), Tops (Long Sleeves, Short Sleeves, Tank Tops, Vests, Sweatshirts, Hoodies), One-Pieces, Dresses, Shoes, Underwear, Bags, Hats, Outerwear, Gloves, Scarves, Ties, Swimsuits, Bras
+* Outfits
+    * Outfits Screen
+* Calendar
+    * Calendar Screen
+* Packing Lists
+    * Packing Lists Screen
+* Measurements
+    * Measurements Screen
 
 **Flow Navigation** (Screen to Screen)
+* Login Screen
+    * Create Account Screen
+    * Closet Screen
+* Create Account Screen
+    * Login Screen
+    * Closet Screen
+* Closet Screen
+    * Import Closet Item Screen
+* Import Closet Item Screen
+    * Closet Screen
+* Outfits Screen
+    * Edit Outfit Screen
+* Edit Outfit Screen
+    * Outfits Screen
+* Packing Lists Screen
+    * Outfits Screen
+    * Closet Screen
+* Calendar Screen
+    * Outfits Screen
+    * Closet Screen
 
-* [list first screen here]
-   * [list screen navigation here]
-   * ...
-* [list second screen here]
-   * [list screen navigation here]
-   * ...
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
