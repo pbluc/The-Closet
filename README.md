@@ -151,30 +151,29 @@ A virtual closet app for your real-life wardrobe, with tools and features to man
     * Closet Screen
 * Closet Screen
     * Import Closet Item Screen
+    * Login Screen
 * Import Closet Item Screen
     * Closet Screen
 * Outfits Screen
     * Edit Outfit Screen
+    * Login Screen
 * Edit Outfit Screen
     * Outfits Screen
 * Packing Lists Screen
     * Outfits Screen
     * Closet Screen
+    * Login Screen
 * Calendar Screen
     * Outfits Screen
     * Closet Screen
+    * Login Screen
+* Measurements Screen
+    * Login Screen
 
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src="https://i.imgur.com/KV407nn.png" width=600>
 
-### [BONUS] Digital Wireframes & Mockups
-
-### [BONUS] Interactive Prototype
-
-## Schema 
-[This section will be completed in Unit 9]
 ### Models
 [Add table of models]
 ### Networking
