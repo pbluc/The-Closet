@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/closet"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="Closet"/>
+    <item
+        android:id="@+id/outfits"
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title="Outfits"/>
+    <item
+        android:id="@+id/calendar"
+        android:icon="@drawable/ic_baseline_calendar_today_24"
+        android:title="Calendar"/>
+    <item
+        android:id="@+id/packingLists"
+        android:icon="@drawable/ic_baseline_list_alt_24"
+        android:title="Packing Lists"/>
+    <item
+        android:id="@+id/measurements"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="Measurements"/>
+
+</menu>
