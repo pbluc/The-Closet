@@ -56,7 +56,8 @@ public class LoginActivity extends AppCompatActivity {
     // Check if user is signed in (non-null) and update UI accordingly
     FirebaseUser currentUser = mAuth.getCurrentUser();
     if (currentUser != null) {
-      // TODO: Take them to Closet Activity
+      // Go to Main Activity
+      goToMainActivity();
     }
   }
 
@@ -66,7 +67,8 @@ public class LoginActivity extends AppCompatActivity {
         if (task.isSuccessful()) {
           // Sign in success, update UI with the signed-in user's information
           Log.d(TAG, "logInWithEmail:success");
-          // TODO: Take them to Closet Activity
+          // Go to Main Activity
+          goToMainActivity();
         } else {
           // If sign in fails, display a message to the user
           Log.d(TAG, "logInWithEmail:failure", task.getException());
@@ -77,6 +79,12 @@ public class LoginActivity extends AppCompatActivity {
 
   private void goToCreateAccountActivity() {
     Intent i = new Intent(this, CreateAccountActivity.class);
+    startActivity(i);
+    finish();
+  }
+
+  private void goToMainActivity() {
+    Intent i = new Intent(this, MainActivity.class);
     startActivity(i);
     finish();
   }

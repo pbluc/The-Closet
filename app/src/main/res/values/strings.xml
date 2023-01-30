@@ -1,5 +1,16 @@
 <resources>
     <string name="app_name">The Closet</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="closet_fragment">Closet Fragment</string>
+    <string name="outfits_fragment">Outfits Fragment</string>
+    <string name="calendar_fragment">Calendar Fragment</string>
+    <string name="packing_lists_fragment">Packing Lists Fragment</string>
+    <string name="measurements_fragment">Measurements Fragment</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="signup">Sign Up</string>
+    <string name="full_name">Full Name</string>
+    <string name="create_password">Create Password</string>
+    <string name="reenter_password">Re-enter Password</string>
 </resources>
