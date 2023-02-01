@@ -35,7 +35,7 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     etFullName = findViewById(R.id.editTextFullName);
     etEmail = findViewById(R.id.editTextEmailAddress);
-    etPassword = findViewById(R.id.editTextPassword);
+    etPassword = findViewById(R.id.editTextCreatePassword);
     etReEnterPassword = findViewById(R.id.editTextReEnterPassword);
     btnSignUp = findViewById(R.id.buttonSignUp);
     tvLogin = findViewById(R.id.textViewLogin);

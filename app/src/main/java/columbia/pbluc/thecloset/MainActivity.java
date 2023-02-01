@@ -5,7 +5,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import columbia.pbluc.thecloset.databinding.ActivityMainBinding;
 import columbia.pbluc.thecloset.fragments.CalendarFragment;
@@ -15,7 +19,9 @@ import columbia.pbluc.thecloset.fragments.OutfitsFragment;
 import columbia.pbluc.thecloset.fragments.PackingListsFragment;
 
 public class MainActivity extends AppCompatActivity {
+  private static final String TAG = "Main";
 
+  private FirebaseAuth mAuth;
   ActivityMainBinding binding;
 
   @Override
@@ -23,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     binding = ActivityMainBinding.inflate(getLayoutInflater());
     setContentView(binding.getRoot());
+
+    // Initialize Firebase Auth
+    mAuth = FirebaseAuth.getInstance();
+
     replaceFragment(new ClosetFragment());
 
     binding.bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
@@ -53,4 +63,22 @@ public class MainActivity extends AppCompatActivity {
     fragmentTransaction.replace(R.id.frameLayout, fragment);
     fragmentTransaction.commit();
   }
+
+  @Override
+  protected void onStart() {
+    super.onStart();
+    // Check if user is signed in (non-null) and update UI accordingly
+    FirebaseUser currentUser = mAuth.getCurrentUser();
+    if (currentUser == null) {
+      // Go to Login Activity
+      goToLoginActivity();
+    }
+  }
+
+  private void goToLoginActivity() {
+    Intent i = new Intent(this, LoginActivity.class);
+    startActivity(i);
+    finish();
+  }
 }
+
