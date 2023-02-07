@@ -3,10 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/patri/AndroidStudioProjects/TheCloset/app/src/main/res/drawable/ic_baseline_calendar_today_24.xml" value="0.3703125" />
+        <entry key="..\:/Users/patri/AndroidStudioProjects/TheCloset/app/src/main/res/drawable/ic_baseline_exit_to_app_24.xml" value="0.3703125" />
         <entry key="..\:/Users/patri/AndroidStudioProjects/TheCloset/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.3203125" />
         <entry key="..\:/Users/patri/AndroidStudioProjects/TheCloset/app/src/main/res/layout/activity_create_account.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/patri/AndroidStudioProjects/TheCloset/app/src/main/res/layout/activity_login.xml" value="0.3541666666666667" />
-        <entry key="..\:/Users/patri/AndroidStudioProjects/TheCloset/app/src/main/res/layout/activity_main.xml" value="0.2222222222222222" />
+        <entry key="..\:/Users/patri/AndroidStudioProjects/TheCloset/app/src/main/res/layout/activity_main.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/patri/AndroidStudioProjects/TheCloset/app/src/main/res/layout/fragment_calendar.xml" value="0.3541666666666667" />
         <entry key="..\:/Users/patri/AndroidStudioProjects/TheCloset/app/src/main/res/layout/fragment_closet.xml" value="0.3541666666666667" />
         <entry key="..\:/Users/patri/AndroidStudioProjects/TheCloset/app/src/main/res/layout/fragment_measurements.xml" value="0.3541666666666667" />

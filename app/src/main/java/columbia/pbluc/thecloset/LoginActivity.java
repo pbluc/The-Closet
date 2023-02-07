@@ -26,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
   private EditText etPassword;
   private Button btnLogin;
   private TextView tvCreateAccount;
+  private TextView tvResetPassword;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     etPassword = findViewById(R.id.editTextPassword);
     btnLogin = findViewById(R.id.buttonLogin);
     tvCreateAccount = findViewById(R.id.textViewSignUp);
+    tvResetPassword = findViewById(R.id.textViewResetPassword);
 
     btnLogin.setOnClickListener(v -> {
       String email = etEmail.getText().toString().trim();
@@ -48,17 +50,29 @@ public class LoginActivity extends AppCompatActivity {
     });
 
     tvCreateAccount.setOnClickListener(v -> goToCreateAccountActivity());
+    tvResetPassword.setOnClickListener(v -> {
+      String email = etEmail.getText().toString().trim();
+
+      resetPassword(email);
+    });
   }
 
-  @Override
-  protected void onStart() {
-    super.onStart();
-    // Check if user is signed in (non-null) and update UI accordingly
-    FirebaseUser currentUser = mAuth.getCurrentUser();
-    if (currentUser != null) {
-      // Go to Main Activity
-      goToMainActivity();
-    }
+  private void resetPassword(String email) {
+    mAuth.sendPasswordResetEmail(email)
+      .addOnCompleteListener(this, task -> {
+        if (task.isSuccessful()) {
+          Log.d(TAG, "Password reset email sent.");
+          Toast.makeText(LoginActivity.this, "If account was found, reset password email was sent", Toast.LENGTH_LONG).show();
+        } else {
+          Log.d(TAG, "sendResetPasswordEmail:failure", task.getException());
+        }
+      });
+  }
+
+  private void goToCreateAccountActivity() {
+    Intent i = new Intent(this, CreateAccountActivity.class);
+    startActivity(i);
+    finish();
   }
 
   private void logIn(String email, String password) {
@@ -77,15 +91,20 @@ public class LoginActivity extends AppCompatActivity {
       });
   }
 
-  private void goToCreateAccountActivity() {
-    Intent i = new Intent(this, CreateAccountActivity.class);
-    startActivity(i);
-    finish();
-  }
-
   private void goToMainActivity() {
     Intent i = new Intent(this, MainActivity.class);
     startActivity(i);
     finish();
+  }
+
+  @Override
+  protected void onStart() {
+    super.onStart();
+    // Check if user is signed in (non-null) and update UI accordingly
+    FirebaseUser currentUser = mAuth.getCurrentUser();
+    if (currentUser != null) {
+      // Go to Main Activity
+      goToMainActivity();
+    }
   }
 }

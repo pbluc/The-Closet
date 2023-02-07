@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -22,18 +23,27 @@ public class MainActivity extends AppCompatActivity {
   private static final String TAG = "Main";
 
   private FirebaseAuth mAuth;
+
   ActivityMainBinding binding;
+
+  private ImageButton imageButtonLogout;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     binding = ActivityMainBinding.inflate(getLayoutInflater());
     setContentView(binding.getRoot());
+    replaceFragment(new ClosetFragment());
 
     // Initialize Firebase Auth
     mAuth = FirebaseAuth.getInstance();
 
-    replaceFragment(new ClosetFragment());
+    imageButtonLogout = findViewById(R.id.imageButtonLogout);
+
+    imageButtonLogout.setOnClickListener(v -> {
+      logOut();
+      goToLoginActivity();
+    });
 
     binding.bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
       switch (item.getItemId()) {
@@ -55,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
       }
       return true;
     });
+
   }
 
   private void replaceFragment(Fragment fragment) {
@@ -62,6 +73,16 @@ public class MainActivity extends AppCompatActivity {
     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
     fragmentTransaction.replace(R.id.frameLayout, fragment);
     fragmentTransaction.commit();
+  }
+
+  private void goToLoginActivity() {
+    Intent i = new Intent(this, LoginActivity.class);
+    startActivity(i);
+    finish();
+  }
+
+  private void logOut() {
+    mAuth.signOut();
   }
 
   @Override
@@ -73,12 +94,6 @@ public class MainActivity extends AppCompatActivity {
       // Go to Login Activity
       goToLoginActivity();
     }
-  }
-
-  private void goToLoginActivity() {
-    Intent i = new Intent(this, LoginActivity.class);
-    startActivity(i);
-    finish();
   }
 }
 
