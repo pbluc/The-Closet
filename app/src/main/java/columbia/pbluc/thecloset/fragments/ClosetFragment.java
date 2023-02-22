@@ -1,5 +1,6 @@
 package columbia.pbluc.thecloset.fragments;
 
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,54 +8,41 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import columbia.pbluc.thecloset.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ClosetFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ClosetFragment extends Fragment {
 
-  // TODO: Rename parameter arguments, choose names that match
-  // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-  private static final String ARG_PARAM1 = "param1";
-  private static final String ARG_PARAM2 = "param2";
+  private String currentCategory;
 
-  // TODO: Rename and change types of parameters
-  private String mParam1;
-  private String mParam2;
+  private ImageButton ibAddClosetItem;
+  private ImageButton ibBackCategory;
+  private Button btnTopsCategory;
+  private Button btnBottomsCategory;
+  private Button btnOnePiecesCategory;
+  private Button btnDressesCategory;
+  private Button btnShoesCategory;
+  private Button btnUnderwearCategory;
+  private Button btnBagsCategory;
+  private Button btnHatsCategory;
+  private Button btnOuterwearCategory;
+  private Button btnGlovesCategory;
+  private Button btnScarvesCategory;
+  private Button btnTiesCategory;
+  private Button btnSwimsuitsCategory;
+  private Button btnBrasCategory;
+
 
   public ClosetFragment() {
     // Required empty public constructor
   }
 
-  /**
-   * Use this factory method to create a new instance of
-   * this fragment using the provided parameters.
-   *
-   * @param param1 Parameter 1.
-   * @param param2 Parameter 2.
-   * @return A new instance of fragment ClosetFragment.
-   */
-  // TODO: Rename and change types and number of parameters
-  public static ClosetFragment newInstance(String param1, String param2) {
-    ClosetFragment fragment = new ClosetFragment();
-    Bundle args = new Bundle();
-    args.putString(ARG_PARAM1, param1);
-    args.putString(ARG_PARAM2, param2);
-    fragment.setArguments(args);
-    return fragment;
-  }
-
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    if (getArguments() != null) {
-      mParam1 = getArguments().getString(ARG_PARAM1);
-      mParam2 = getArguments().getString(ARG_PARAM2);
-    }
+
   }
 
   @Override
@@ -62,5 +50,27 @@ public class ClosetFragment extends Fragment {
                            Bundle savedInstanceState) {
     // Inflate the layout for this fragment
     return inflater.inflate(R.layout.fragment_closet, container, false);
+  }
+
+  @Override
+  public void onViewCreated(View view, Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+
+    ibAddClosetItem = view.findViewById(R.id.imageButtonAddClosetItem);
+    ibBackCategory = view.findViewById(R.id.imageButtonBackCategory);
+    btnTopsCategory = view.findViewById(R.id.buttonTopsCategory);
+    btnBottomsCategory = view.findViewById(R.id.buttonBottomsCategory);
+    btnOnePiecesCategory = view.findViewById(R.id.buttonOnePiecesCategory);
+    btnDressesCategory = view.findViewById(R.id.buttonDressesCategory);
+    btnShoesCategory = view.findViewById(R.id.buttonShoesCategory);
+    btnUnderwearCategory = view.findViewById(R.id.buttonUnderwearCategory);
+    btnBagsCategory = view.findViewById(R.id.buttonBagsCategory);
+    btnHatsCategory = view.findViewById(R.id.buttonHatsCategory);
+    btnOuterwearCategory = view.findViewById(R.id.buttonOuterwearCategory);
+    btnGlovesCategory = view.findViewById(R.id.buttonGlovesCategory);
+    btnScarvesCategory = view.findViewById(R.id.buttonScarvesCategory);
+    btnTiesCategory = view.findViewById(R.id.buttonTiesCategory);
+    btnSwimsuitsCategory = view.findViewById(R.id.buttonSwimsuitsCategory);
+    btnBrasCategory = view.findViewById(R.id.buttonBrasCategory);
   }
 }

@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
   ActivityMainBinding binding;
 
-  private ImageButton imageButtonLogout;
+  private ImageButton ibLogout;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +38,9 @@ public class MainActivity extends AppCompatActivity {
     // Initialize Firebase Auth
     mAuth = FirebaseAuth.getInstance();
 
-    imageButtonLogout = findViewById(R.id.imageButtonLogout);
+    ibLogout = findViewById(R.id.imageButtonLogout);
 
-    imageButtonLogout.setOnClickListener(v -> {
+    ibLogout.setOnClickListener(v -> {
       logOut();
       goToLoginActivity();
     });
