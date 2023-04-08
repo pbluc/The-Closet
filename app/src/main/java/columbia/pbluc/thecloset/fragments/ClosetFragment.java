@@ -72,5 +72,9 @@ public class ClosetFragment extends Fragment {
     btnTiesCategory = view.findViewById(R.id.buttonTiesCategory);
     btnSwimsuitsCategory = view.findViewById(R.id.buttonSwimsuitsCategory);
     btnBrasCategory = view.findViewById(R.id.buttonBrasCategory);
+
+    ibAddClosetItem.setOnClickListener(v -> {
+
+    });
   }
 }
