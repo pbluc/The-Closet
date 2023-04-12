@@ -13,4 +13,7 @@
     <string name="full_name">Full Name</string>
     <string name="create_password">Create Password</string>
     <string name="reenter_password">Re-enter Password</string>
+    <string name="categories_all">ALL</string>
+    <string name="categories_bottoms">BOTTOMS</string>
+    <string name="categories_tops">TOPS</string>
 </resources>

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 import columbia.pbluc.thecloset.R;
 
@@ -33,6 +34,9 @@ public class ClosetFragment extends Fragment {
   private Button btnTiesCategory;
   private Button btnSwimsuitsCategory;
   private Button btnBrasCategory;
+  private LinearLayout linearLayoutClosetCategories;
+  private LinearLayout linearLayoutTopsSubcategories;
+  private LinearLayout linearLayoutBottomsSubcategories;
 
 
   public ClosetFragment() {
@@ -56,6 +60,8 @@ public class ClosetFragment extends Fragment {
   public void onViewCreated(View view, Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
+    currentCategory = getResources().getString(R.string.categories_all);;
+
     ibAddClosetItem = view.findViewById(R.id.imageButtonAddClosetItem);
     ibBackCategory = view.findViewById(R.id.imageButtonBackCategory);
     btnTopsCategory = view.findViewById(R.id.buttonTopsCategory);
@@ -72,9 +78,28 @@ public class ClosetFragment extends Fragment {
     btnTiesCategory = view.findViewById(R.id.buttonTiesCategory);
     btnSwimsuitsCategory = view.findViewById(R.id.buttonSwimsuitsCategory);
     btnBrasCategory = view.findViewById(R.id.buttonBrasCategory);
+    linearLayoutClosetCategories = view.findViewById(R.id.linearLayoutClosetCategories);
+    linearLayoutTopsSubcategories = view.findViewById(R.id.linearLayoutTopsSubcategories);
+    linearLayoutBottomsSubcategories = view.findViewById(R.id.linearLayoutBottomsSubcategories);
 
     ibAddClosetItem.setOnClickListener(v -> {
 
     });
+
+    ibBackCategory.setOnClickListener(v -> {
+
+    });
+
+    btnBottomsCategory.setOnClickListener(v -> {
+      linearLayoutClosetCategories.setVisibility(View.GONE);
+      linearLayoutBottomsSubcategories.setVisibility(View.VISIBLE);
+      currentCategory = getResources().getString(R.string.categories_bottoms);
+    });
+
+    btnTopsCategory.setOnClickListener((v -> {
+      linearLayoutClosetCategories.setVisibility(View.GONE);
+      linearLayoutTopsSubcategories.setVisibility(View.VISIBLE);
+      currentCategory = getResources().getString(R.string.categories_tops);
+    }));
   }
 }
