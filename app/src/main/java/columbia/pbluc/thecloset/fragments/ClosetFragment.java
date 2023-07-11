@@ -83,22 +83,36 @@ public class ClosetFragment extends Fragment {
     linearLayoutBottomsSubcategories = view.findViewById(R.id.linearLayoutBottomsSubcategories);
 
     ibAddClosetItem.setOnClickListener(v -> {
-
+      // TODO: Open up gallery to choose image
     });
 
     ibBackCategory.setOnClickListener(v -> {
+      linearLayoutTopsSubcategories.setVisibility(View.GONE);
+      linearLayoutBottomsSubcategories.setVisibility(View.GONE);
+      linearLayoutClosetCategories.setVisibility(View.VISIBLE);
 
+      ibBackCategory.setVisibility(View.GONE);
+
+      currentCategory = getResources().getString(R.string.categories_all);
     });
 
     btnBottomsCategory.setOnClickListener(v -> {
       linearLayoutClosetCategories.setVisibility(View.GONE);
+      linearLayoutTopsSubcategories.setVisibility(View.GONE);
       linearLayoutBottomsSubcategories.setVisibility(View.VISIBLE);
+
+      ibBackCategory.setVisibility(View.VISIBLE);
+
       currentCategory = getResources().getString(R.string.categories_bottoms);
     });
 
     btnTopsCategory.setOnClickListener((v -> {
       linearLayoutClosetCategories.setVisibility(View.GONE);
+      linearLayoutBottomsSubcategories.setVisibility(View.GONE);
       linearLayoutTopsSubcategories.setVisibility(View.VISIBLE);
+
+      ibBackCategory.setVisibility(View.VISIBLE);
+
       currentCategory = getResources().getString(R.string.categories_tops);
     }));
   }

@@ -35,217 +35,223 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:id="@+id/linearLayoutClosetCategories"
-                android:visibility="visible">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-                <Button
-                    android:id="@+id/buttonTopsCategory"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="TOPS"
-                    android:layout_marginRight="10dp"/>
+                    android:orientation="horizontal"
+                    android:id="@+id/linearLayoutClosetCategories"
+                    android:visibility="visible">
 
-                <Button
-                    android:id="@+id/buttonBottomsCategory"
-                    android:layout_width="wrap_content"
+                    <Button
+                        android:id="@+id/buttonTopsCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TOPS"
+                        android:layout_marginRight="10dp"/>
+
+                    <Button
+                        android:id="@+id/buttonBottomsCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Bottoms"
+                        android:layout_marginRight="10dp"/>
+
+                    <Button
+                        android:id="@+id/buttonOnePiecesCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="One Pieces"
+                        android:layout_marginRight="10dp"/>
+
+                    <Button
+                        android:id="@+id/buttonDressesCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Dresses"
+                        android:layout_marginRight="10dp"/>
+
+                    <Button
+                        android:id="@+id/buttonShoesCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Shoes"
+                        android:layout_marginRight="10dp"/>
+
+                    <Button
+                        android:id="@+id/buttonUnderwearCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Underwear"
+                        android:layout_marginRight="10dp"/>
+
+                    <Button
+                        android:id="@+id/buttonBagsCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Bags"
+                        android:layout_marginRight="10dp"/>
+
+                    <Button
+                        android:id="@+id/buttonHatsCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Hats"
+                        android:layout_marginRight="10dp"/>
+
+                    <Button
+                        android:id="@+id/buttonOuterwearCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Outerwear"
+                        android:layout_marginRight="10dp"/>
+
+                    <Button
+                        android:id="@+id/buttonGlovesCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Gloves"
+                        android:layout_marginRight="10dp"/>
+
+                    <Button
+                        android:id="@+id/buttonScarvesCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Scarves"
+                        android:layout_marginRight="10dp"/>
+
+                    <Button
+                        android:id="@+id/buttonTiesCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Ties"
+                        android:layout_marginRight="10dp"/>
+
+                    <Button
+                        android:id="@+id/buttonSwimsuitsCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Swimsuits"
+                        android:layout_marginRight="10dp"/>
+
+                    <Button
+                        android:id="@+id/buttonBrasCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Bras"
+                        android:layout_marginRight="10dp"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Bottoms"
-                    android:layout_marginRight="10dp"/>
+                    android:orientation="horizontal"
+                    android:id="@+id/linearLayoutTopsSubcategories"
+                    android:visibility="gone">
 
-                <Button
-                    android:id="@+id/buttonOnePiecesCategory"
-                    android:layout_width="wrap_content"
+                    <Button
+                        android:id="@+id/buttonLongSleevesCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="LONG SLEEVES"
+                        android:layout_marginRight="10dp"/>
+
+                    <Button
+                        android:id="@+id/buttonShortSleevesCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="SHORT SLEEVES"
+                        android:layout_marginRight="10dp"/>
+
+                    <Button
+                        android:id="@+id/buttonTankTopsCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TANK TOPS"
+                        android:layout_marginRight="10dp"/>
+
+                    <Button
+                        android:id="@+id/buttonVestsCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="VESTS"
+                        android:layout_marginRight="10dp"/>
+
+                    <Button
+                        android:id="@+id/buttonSweatshirtsCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="SWEATSHIRTS"
+                        android:layout_marginRight="10dp"/>
+
+                    <Button
+                        android:id="@+id/buttonHoodiesCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="HOODIES"
+                        android:layout_marginRight="10dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="One Pieces"
-                    android:layout_marginRight="10dp"/>
+                    android:orientation="horizontal"
+                    android:id="@+id/linearLayoutBottomsSubcategories"
+                    android:visibility="gone">
 
-                <Button
-                    android:id="@+id/buttonDressesCategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Dresses"
-                    android:layout_marginRight="10dp"/>
+                    <Button
+                        android:id="@+id/buttonSkirtsCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="SKIRTS"
+                        android:layout_marginRight="10dp"/>
 
-                <Button
-                    android:id="@+id/buttonShoesCategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Shoes"
-                    android:layout_marginRight="10dp"/>
+                    <Button
+                        android:id="@+id/buttonShortsCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="SHORTS"
+                        android:layout_marginRight="10dp"/>
 
-                <Button
-                    android:id="@+id/buttonUnderwearCategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Underwear"
-                    android:layout_marginRight="10dp"/>
+                    <Button
+                        android:id="@+id/buttonPantsCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="PANTS"
+                        android:layout_marginRight="10dp"/>
 
-                <Button
-                    android:id="@+id/buttonBagsCategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Bags"
-                    android:layout_marginRight="10dp"/>
+                </LinearLayout>
 
-                <Button
-                    android:id="@+id/buttonHatsCategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Hats"
-                    android:layout_marginRight="10dp"/>
-
-                <Button
-                    android:id="@+id/buttonOuterwearCategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Outerwear"
-                    android:layout_marginRight="10dp"/>
-
-                <Button
-                    android:id="@+id/buttonGlovesCategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Gloves"
-                    android:layout_marginRight="10dp"/>
-
-                <Button
-                    android:id="@+id/buttonScarvesCategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Scarves"
-                    android:layout_marginRight="10dp"/>
-
-                <Button
-                    android:id="@+id/buttonTiesCategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Ties"
-                    android:layout_marginRight="10dp"/>
-
-                <Button
-                    android:id="@+id/buttonSwimsuitsCategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Swimsuits"
-                    android:layout_marginRight="10dp"/>
-
-                <Button
-                    android:id="@+id/buttonBrasCategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Bras"
-                    android:layout_marginRight="10dp"/>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:id="@+id/linearLayoutTopsSubcategories"
-                android:visibility="gone">
-
-                <Button
-                    android:id="@+id/buttonLongSleevesCategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="LONG SLEEVES"
-                    android:layout_marginRight="10dp"/>
-
-                <Button
-                    android:id="@+id/buttonShortSleevesCategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="SHORT SLEEVES"
-                    android:layout_marginRight="10dp"/>
-
-                <Button
-                    android:id="@+id/buttonTankTopsCategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="TANK TOPS"
-                    android:layout_marginRight="10dp"/>
-
-                <Button
-                    android:id="@+id/buttonVestsCategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="VESTS"
-                    android:layout_marginRight="10dp"/>
-
-                <Button
-                    android:id="@+id/buttonSweatshirtsCategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="SWEATSHIRTS"
-                    android:layout_marginRight="10dp"/>
-
-                <Button
-                    android:id="@+id/buttonHoodiesCategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="HOODIES"
-                    android:layout_marginRight="10dp"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:id="@+id/linearLayoutBottomsSubcategories"
-                android:visibility="gone">
-
-                <Button
-                    android:id="@+id/buttonSkirtsCategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="SKIRTS"
-                    android:layout_marginRight="10dp"/>
-
-                <Button
-                    android:id="@+id/buttonShortsCategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="SHORTS"
-                    android:layout_marginRight="10dp"/>
-
-                <Button
-                    android:id="@+id/buttonPantsCategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="PANTS"
-                    android:layout_marginRight="10dp"/>
-
-            </LinearLayout>
+            </RelativeLayout>
 
         </HorizontalScrollView>
         
