@@ -16,4 +16,5 @@
     <string name="categories_all">ALL</string>
     <string name="categories_bottoms">BOTTOMS</string>
     <string name="categories_tops">TOPS</string>
+    <string name="select_image">Select Image</string>
 </resources>

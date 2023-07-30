@@ -1,10 +1,16 @@
 package columbia.pbluc.thecloset.fragments;
 
-import android.media.Image;
+import static android.app.Activity.RESULT_OK;
+
+import android.content.ClipData;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,11 +18,17 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
+import java.util.ArrayList;
+
+import columbia.pbluc.thecloset.ImportClosetItemActivity;
+import columbia.pbluc.thecloset.LoginActivity;
 import columbia.pbluc.thecloset.R;
 
 public class ClosetFragment extends Fragment {
-
+  private static final String TAG = "ClosetFragment";
+  private static final int SELECT_IMAGES = 1;
   private String currentCategory;
+  private ArrayList<Uri> selectedImageUris;
 
   private ImageButton ibAddClosetItem;
   private ImageButton ibBackCategory;
@@ -82,38 +94,76 @@ public class ClosetFragment extends Fragment {
     linearLayoutTopsSubcategories = view.findViewById(R.id.linearLayoutTopsSubcategories);
     linearLayoutBottomsSubcategories = view.findViewById(R.id.linearLayoutBottomsSubcategories);
 
+    // Open up gallery to choose image
     ibAddClosetItem.setOnClickListener(v -> {
-      // TODO: Open up gallery to choose image
+      // Create an instance of the intent of the type image
+      Intent intent = new Intent();
+      intent.setType("image/*");
+      // Allowing multiple images to be selected
+      intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+      intent.setAction(Intent.ACTION_GET_CONTENT);
+      startActivityForResult(Intent.createChooser(intent, getResources().getString(R.string.select_image)), SELECT_IMAGES);
     });
 
-    ibBackCategory.setOnClickListener(v -> {
-      linearLayoutTopsSubcategories.setVisibility(View.GONE);
-      linearLayoutBottomsSubcategories.setVisibility(View.GONE);
-      linearLayoutClosetCategories.setVisibility(View.VISIBLE);
+    ibBackCategory.setOnClickListener(v -> { goToMainCloset(); });
+    btnBottomsCategory.setOnClickListener(v -> { goToBottomsCategory(); });
+    btnTopsCategory.setOnClickListener((v -> { goToTopsCategory(); }));
+  }
 
-      ibBackCategory.setVisibility(View.GONE);
+  private void goToTopsCategory() {
+    linearLayoutClosetCategories.setVisibility(View.GONE);
+    linearLayoutBottomsSubcategories.setVisibility(View.GONE);
+    linearLayoutTopsSubcategories.setVisibility(View.VISIBLE);
 
-      currentCategory = getResources().getString(R.string.categories_all);
-    });
+    ibBackCategory.setVisibility(View.VISIBLE);
 
-    btnBottomsCategory.setOnClickListener(v -> {
-      linearLayoutClosetCategories.setVisibility(View.GONE);
-      linearLayoutTopsSubcategories.setVisibility(View.GONE);
-      linearLayoutBottomsSubcategories.setVisibility(View.VISIBLE);
+    currentCategory = getResources().getString(R.string.categories_tops);
+  }
 
-      ibBackCategory.setVisibility(View.VISIBLE);
+  private void goToBottomsCategory() {
+    linearLayoutClosetCategories.setVisibility(View.GONE);
+    linearLayoutTopsSubcategories.setVisibility(View.GONE);
+    linearLayoutBottomsSubcategories.setVisibility(View.VISIBLE);
 
-      currentCategory = getResources().getString(R.string.categories_bottoms);
-    });
+    ibBackCategory.setVisibility(View.VISIBLE);
 
-    btnTopsCategory.setOnClickListener((v -> {
-      linearLayoutClosetCategories.setVisibility(View.GONE);
-      linearLayoutBottomsSubcategories.setVisibility(View.GONE);
-      linearLayoutTopsSubcategories.setVisibility(View.VISIBLE);
+    currentCategory = getResources().getString(R.string.categories_bottoms);
+  }
 
-      ibBackCategory.setVisibility(View.VISIBLE);
+  private void goToMainCloset() {
+    linearLayoutTopsSubcategories.setVisibility(View.GONE);
+    linearLayoutBottomsSubcategories.setVisibility(View.GONE);
+    linearLayoutClosetCategories.setVisibility(View.VISIBLE);
 
-      currentCategory = getResources().getString(R.string.categories_tops);
-    }));
+    ibBackCategory.setVisibility(View.GONE);
+
+    currentCategory = getResources().getString(R.string.categories_all);
+  }
+
+  @Override
+  public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+
+    if (resultCode == RESULT_OK) {
+      if (requestCode == SELECT_IMAGES && data != null) {
+        selectedImageUris = new ArrayList<Uri>();
+        // Multiple images were selected
+        if (data.getClipData() != null) {
+          ClipData clipData = data.getClipData();
+          int totalImages = clipData.getItemCount();
+          for (int i = 0; i < totalImages; i++) {
+            Uri imageUrl = clipData.getItemAt(i).getUri();
+            selectedImageUris.add(imageUrl);
+          }
+        } else { // One image was selected
+          Uri imageUrl = data.getData();
+          selectedImageUris.add(imageUrl);
+        }
+        Log.d(TAG, "Size of selectedImageUris: "+ selectedImageUris.size());
+        // TODO: Send selected image urls array to Import Closet Item Activity
+        Intent i = new Intent(getActivity(), ImportClosetItemActivity.class);
+        startActivity(i);
+      }
+    }
   }
 }
