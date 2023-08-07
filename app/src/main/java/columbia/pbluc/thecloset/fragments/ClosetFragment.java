@@ -105,9 +105,11 @@ public class ClosetFragment extends Fragment {
       startActivityForResult(Intent.createChooser(intent, getResources().getString(R.string.select_image)), SELECT_IMAGES);
     });
 
-    ibBackCategory.setOnClickListener(v -> { goToMainCloset(); });
-    btnBottomsCategory.setOnClickListener(v -> { goToBottomsCategory(); });
-    btnTopsCategory.setOnClickListener((v -> { goToTopsCategory(); }));
+    ibBackCategory.setOnClickListener(v -> goToMainCloset());
+    btnBottomsCategory.setOnClickListener(v -> goToBottomsCategory());
+    btnTopsCategory.setOnClickListener((v -> goToTopsCategory()));
+
+    // TODO: Show view of all closet items
   }
 
   private void goToTopsCategory() {
@@ -160,8 +162,8 @@ public class ClosetFragment extends Fragment {
           selectedImageUris.add(imageUrl);
         }
         Log.d(TAG, "Size of selectedImageUris: "+ selectedImageUris.size());
-        // TODO: Send selected image urls array to Import Closet Item Activity
         Intent i = new Intent(getActivity(), ImportClosetItemActivity.class);
+        i.putExtra("selectedImageUris", selectedImageUris);
         startActivity(i);
       }
     }

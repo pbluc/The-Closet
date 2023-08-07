@@ -47,9 +47,6 @@ public class MainActivity extends AppCompatActivity {
 
     binding.bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
       switch (item.getItemId()) {
-        case R.id.closet:
-          replaceFragment(new ClosetFragment());
-          break;
         case R.id.outfits:
           replaceFragment(new OutfitsFragment());
           break;
@@ -62,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
         case R.id.measurements:
           replaceFragment(new MeasurementsFragment());
           break;
+        default:
+          replaceFragment(new ClosetFragment());
       }
       return true;
     });
