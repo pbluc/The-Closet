@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -18,6 +17,16 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
 
 import columbia.pbluc.thecloset.ImportClosetItemActivity;
@@ -26,9 +35,15 @@ import columbia.pbluc.thecloset.R;
 
 public class ClosetFragment extends Fragment {
   private static final String TAG = "ClosetFragment";
+
   private static final int SELECT_IMAGES = 1;
+
   private String currentCategory;
+
   private ArrayList<Uri> selectedImageUris;
+
+  private FirebaseFirestore firebaseFirestore;
+  private FirebaseAuth firebaseAuth;
 
   private ImageButton ibAddClosetItem;
   private ImageButton ibBackCategory;
@@ -72,6 +87,9 @@ public class ClosetFragment extends Fragment {
   public void onViewCreated(View view, Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
+    firebaseFirestore = FirebaseFirestore.getInstance();
+    firebaseAuth = FirebaseAuth.getInstance();
+
     currentCategory = getResources().getString(R.string.categories_all);;
 
     ibAddClosetItem = view.findViewById(R.id.imageButtonAddClosetItem);
@@ -94,22 +112,30 @@ public class ClosetFragment extends Fragment {
     linearLayoutTopsSubcategories = view.findViewById(R.id.linearLayoutTopsSubcategories);
     linearLayoutBottomsSubcategories = view.findViewById(R.id.linearLayoutBottomsSubcategories);
 
-    // Open up gallery to choose image
-    ibAddClosetItem.setOnClickListener(v -> {
-      // Create an instance of the intent of the type image
-      Intent intent = new Intent();
-      intent.setType("image/*");
-      // Allowing multiple images to be selected
-      intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-      intent.setAction(Intent.ACTION_GET_CONTENT);
-      startActivityForResult(Intent.createChooser(intent, getResources().getString(R.string.select_image)), SELECT_IMAGES);
-    });
+    ibAddClosetItem.setOnClickListener(v -> openGallery());
 
     ibBackCategory.setOnClickListener(v -> goToMainCloset());
     btnBottomsCategory.setOnClickListener(v -> goToBottomsCategory());
     btnTopsCategory.setOnClickListener((v -> goToTopsCategory()));
 
     // TODO: Show view of all closet items
+    loadClosetItems();
+  }
+
+  private void loadClosetItems() {
+    FirebaseUser user = firebaseAuth.getCurrentUser();
+
+    firebaseFirestore.collection("users").document(user.getEmail()).collection("closet")
+      .whereEqualTo("category", "")
+      .get()
+      .addOnSuccessListener(queryDocumentSnapshots -> {
+        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+          Log.d(TAG, documentSnapshot.getId() + " => " + documentSnapshot.getData());
+        }
+      })
+      .addOnFailureListener(e -> {
+        Log.e(TAG, "Error getting documents: ", e);
+      });
   }
 
   private void goToTopsCategory() {
@@ -142,8 +168,18 @@ public class ClosetFragment extends Fragment {
     currentCategory = getResources().getString(R.string.categories_all);
   }
 
+  private void openGallery() {
+    // Create an instance of the intent of the type image
+    Intent intent = new Intent();
+    intent.setType("image/*");
+    // Allowing multiple images to be selected
+    intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+    intent.setAction(Intent.ACTION_GET_CONTENT);
+    startActivityForResult(Intent.createChooser(intent, getResources().getString(R.string.select_image)), SELECT_IMAGES);
+  }
+
   @Override
-  public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+  public void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
 
     if (resultCode == RESULT_OK) {
