@@ -8,6 +8,8 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -64,6 +66,8 @@ public class ClosetFragment extends Fragment {
   private LinearLayout linearLayoutClosetCategories;
   private LinearLayout linearLayoutTopsSubcategories;
   private LinearLayout linearLayoutBottomsSubcategories;
+  private RecyclerView recyclerView;
+  private RecyclerView.LayoutManager layoutManager;
 
 
   public ClosetFragment() {
@@ -112,6 +116,10 @@ public class ClosetFragment extends Fragment {
     linearLayoutTopsSubcategories = view.findViewById(R.id.linearLayoutTopsSubcategories);
     linearLayoutBottomsSubcategories = view.findViewById(R.id.linearLayoutBottomsSubcategories);
 
+    recyclerView = view.findViewById(R.id.recyclerView);
+    layoutManager = new GridLayoutManager(getActivity(), 3);
+    recyclerView.setLayoutManager(layoutManager);
+
     ibAddClosetItem.setOnClickListener(v -> openGallery());
 
     ibBackCategory.setOnClickListener(v -> goToMainCloset());
@@ -131,6 +139,11 @@ public class ClosetFragment extends Fragment {
       .addOnSuccessListener(queryDocumentSnapshots -> {
         for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
           Log.d(TAG, documentSnapshot.getId() + " => " + documentSnapshot.getData());
+          String category = (String) documentSnapshot.get("category");
+          if (category.equals("")) {
+            String imageFilename = (String) documentSnapshot.get("name");
+
+          }
         }
       })
       .addOnFailureListener(e -> {
