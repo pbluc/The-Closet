@@ -19,6 +19,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -88,6 +89,7 @@ public class ImportClosetItemActivity extends AppCompatActivity {
                 Map<String, Object> closetItem = new HashMap<>();
                 closetItem.put("name", filename);
                 closetItem.put("category", "");
+                closetItem.put("timestamp", FieldValue.serverTimestamp());
 
                 firebaseFirestore.collection("users").document(user.getEmail()).collection("closet")
                         .add(closetItem)

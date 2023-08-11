@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,14 +27,18 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
 import columbia.pbluc.thecloset.ImportClosetItemActivity;
 import columbia.pbluc.thecloset.LoginActivity;
 import columbia.pbluc.thecloset.R;
+import columbia.pbluc.thecloset.adapters.RecylerViewAdapter;
 
 public class ClosetFragment extends Fragment {
   private static final String TAG = "ClosetFragment";
@@ -43,8 +48,10 @@ public class ClosetFragment extends Fragment {
   private String currentCategory;
 
   private ArrayList<Uri> selectedImageUris;
+  private ArrayList<Uri> closetItemUris;
 
   private FirebaseFirestore firebaseFirestore;
+  private FirebaseStorage firebaseStorage;
   private FirebaseAuth firebaseAuth;
 
   private ImageButton ibAddClosetItem;
@@ -66,8 +73,9 @@ public class ClosetFragment extends Fragment {
   private LinearLayout linearLayoutClosetCategories;
   private LinearLayout linearLayoutTopsSubcategories;
   private LinearLayout linearLayoutBottomsSubcategories;
+
   private RecyclerView recyclerView;
-  private RecyclerView.LayoutManager layoutManager;
+  private RecylerViewAdapter recylerViewAdapter;
 
 
   public ClosetFragment() {
@@ -92,6 +100,7 @@ public class ClosetFragment extends Fragment {
     super.onViewCreated(view, savedInstanceState);
 
     firebaseFirestore = FirebaseFirestore.getInstance();
+    firebaseStorage = FirebaseStorage.getInstance();
     firebaseAuth = FirebaseAuth.getInstance();
 
     currentCategory = getResources().getString(R.string.categories_all);;
@@ -115,18 +124,18 @@ public class ClosetFragment extends Fragment {
     linearLayoutClosetCategories = view.findViewById(R.id.linearLayoutClosetCategories);
     linearLayoutTopsSubcategories = view.findViewById(R.id.linearLayoutTopsSubcategories);
     linearLayoutBottomsSubcategories = view.findViewById(R.id.linearLayoutBottomsSubcategories);
-
     recyclerView = view.findViewById(R.id.recyclerView);
-    layoutManager = new GridLayoutManager(getActivity(), 3);
-    recyclerView.setLayoutManager(layoutManager);
+
+    closetItemUris = new ArrayList<>();
+    recylerViewAdapter = new RecylerViewAdapter(closetItemUris);
+    recyclerView.setAdapter(recylerViewAdapter);
+    recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
 
     ibAddClosetItem.setOnClickListener(v -> openGallery());
-
     ibBackCategory.setOnClickListener(v -> goToMainCloset());
     btnBottomsCategory.setOnClickListener(v -> goToBottomsCategory());
     btnTopsCategory.setOnClickListener((v -> goToTopsCategory()));
 
-    // TODO: Show view of all closet items
     loadClosetItems();
   }
 
@@ -134,16 +143,22 @@ public class ClosetFragment extends Fragment {
     FirebaseUser user = firebaseAuth.getCurrentUser();
 
     firebaseFirestore.collection("users").document(user.getEmail()).collection("closet")
-      .whereEqualTo("category", "")
+      .orderBy("timestamp", Query.Direction.ASCENDING)
       .get()
       .addOnSuccessListener(queryDocumentSnapshots -> {
+        StorageReference storageRef = firebaseStorage.getReference();
+
         for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
           Log.d(TAG, documentSnapshot.getId() + " => " + documentSnapshot.getData());
-          String category = (String) documentSnapshot.get("category");
-          if (category.equals("")) {
-            String imageFilename = (String) documentSnapshot.get("name");
-
-          }
+          String imageFilename = (String) documentSnapshot.get("name");
+          storageRef.child(user.getEmail() + "/" + imageFilename).getDownloadUrl()
+                  .addOnSuccessListener(uri -> {
+                    closetItemUris.add(0, uri);
+                    recylerViewAdapter.notifyItemInserted(0);
+                  })
+                  .addOnFailureListener(e -> {
+                    Log.e(TAG, "Error retrieving download URL: ", e);
+                  });
         }
       })
       .addOnFailureListener(e -> {
