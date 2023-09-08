@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,25 +19,20 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
 import columbia.pbluc.thecloset.ImportClosetItemActivity;
-import columbia.pbluc.thecloset.LoginActivity;
 import columbia.pbluc.thecloset.R;
-import columbia.pbluc.thecloset.adapters.RecylerViewAdapter;
+import columbia.pbluc.thecloset.adapters.RecyclerViewAdapter;
+import columbia.pbluc.thecloset.models.ClosetItem;
 
 public class ClosetFragment extends Fragment {
   private static final String TAG = "ClosetFragment";
@@ -48,7 +42,7 @@ public class ClosetFragment extends Fragment {
   private String currentCategory;
 
   private ArrayList<Uri> selectedImageUris;
-  private ArrayList<Uri> closetItemUris;
+  private ArrayList<ClosetItem> closetItems;
 
   private FirebaseFirestore firebaseFirestore;
   private FirebaseStorage firebaseStorage;
@@ -75,7 +69,7 @@ public class ClosetFragment extends Fragment {
   private LinearLayout linearLayoutBottomsSubcategories;
 
   private RecyclerView recyclerView;
-  private RecylerViewAdapter recylerViewAdapter;
+  private RecyclerViewAdapter recyclerViewAdapter;
 
 
   public ClosetFragment() {
@@ -126,9 +120,9 @@ public class ClosetFragment extends Fragment {
     linearLayoutBottomsSubcategories = view.findViewById(R.id.linearLayoutBottomsSubcategories);
     recyclerView = view.findViewById(R.id.recyclerView);
 
-    closetItemUris = new ArrayList<>();
-    recylerViewAdapter = new RecylerViewAdapter(closetItemUris);
-    recyclerView.setAdapter(recylerViewAdapter);
+    closetItems = new ArrayList<>();
+    recyclerViewAdapter = new RecyclerViewAdapter(closetItems);
+    recyclerView.setAdapter(recyclerViewAdapter);
     recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
 
     ibAddClosetItem.setOnClickListener(v -> openGallery());
@@ -153,8 +147,10 @@ public class ClosetFragment extends Fragment {
           String imageFilename = (String) documentSnapshot.get("name");
           storageRef.child(user.getEmail() + "/" + imageFilename).getDownloadUrl()
                   .addOnSuccessListener(uri -> {
-                    closetItemUris.add(0, uri);
-                    recylerViewAdapter.notifyItemInserted(0);
+                    ClosetItem closetItem = new ClosetItem(documentSnapshot.getId(), imageFilename, "", uri);
+                    closetItems.add(0, closetItem);
+                    recyclerViewAdapter.notifyItemInserted(0);
+                    // TODO: Fix ordering
                   })
                   .addOnFailureListener(e -> {
                     Log.e(TAG, "Error retrieving download URL: ", e);
