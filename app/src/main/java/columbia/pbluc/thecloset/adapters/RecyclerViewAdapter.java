@@ -56,25 +56,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     .fit()
                     .into(ivClosetItem);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (!getSelected().isEmpty()) {
-                        // TODO: Begin selecting
-                        closetItem.setSelected(!closetItem.isSelected());
-                    }
+            itemView.setOnClickListener(view -> {
+                if (!getSelected().isEmpty()) {
+                    closetItem.setSelected(!closetItem.isSelected());
+                    itemView.setBackgroundResource(closetItem.isSelected() ? R.drawable.bg_closet_item_selected : null);
                 }
             });
 
-            itemView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View view) {
-                    if (getSelected().isEmpty()) {
-                        // TODO: Begin selecting
-                        closetItem.setSelected(true);
-                    }
-                    return false;
+            itemView.setOnLongClickListener(view -> {
+                if (getSelected().isEmpty()) {
+                    closetItem.setSelected(true);
+                    itemView.setBackgroundResource(R.drawable.bg_closet_item_selected);
                 }
+                return false;
             });
         }
     }
