@@ -1,5 +1,6 @@
 package columbia.pbluc.thecloset.adapters;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import columbia.pbluc.thecloset.R;
 import columbia.pbluc.thecloset.models.ClosetItem;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ClosetItemViewHolder> {
+    private static final String TAG = "RecyclerViewAdapter";
 
     private ArrayList<ClosetItem> closetItems;
 
@@ -59,7 +61,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             itemView.setOnClickListener(view -> {
                 if (!getSelected().isEmpty()) {
                     closetItem.setSelected(!closetItem.isSelected());
-                    itemView.setBackgroundResource(closetItem.isSelected() ? R.drawable.bg_closet_item_selected : null);
+                    itemView.setBackgroundResource(closetItem.isSelected() ? R.drawable.bg_closet_item_selected : 0);
                 }
             });
 
@@ -68,7 +70,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     closetItem.setSelected(true);
                     itemView.setBackgroundResource(R.drawable.bg_closet_item_selected);
                 }
-                return false;
+                return true;
             });
         }
     }

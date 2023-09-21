@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -50,6 +51,8 @@ public class ClosetFragment extends Fragment {
 
   private ImageButton ibAddClosetItem;
   private ImageButton ibBackCategory;
+  private ImageView ivUnselectItems;
+  private ImageView ivDeleteItems;
   private Button btnTopsCategory;
   private Button btnBottomsCategory;
   private Button btnOnePiecesCategory;
@@ -101,6 +104,8 @@ public class ClosetFragment extends Fragment {
 
     ibAddClosetItem = view.findViewById(R.id.imageButtonAddClosetItem);
     ibBackCategory = view.findViewById(R.id.imageButtonBackCategory);
+    ivUnselectItems = view.findViewById(R.id.ivUnselectItems);
+    ivDeleteItems = view.findViewById(R.id.ivDeleteItems);
     btnTopsCategory = view.findViewById(R.id.buttonTopsCategory);
     btnBottomsCategory = view.findViewById(R.id.buttonBottomsCategory);
     btnOnePiecesCategory = view.findViewById(R.id.buttonOnePiecesCategory);
@@ -127,6 +132,8 @@ public class ClosetFragment extends Fragment {
 
     ibAddClosetItem.setOnClickListener(v -> openGallery());
     ibBackCategory.setOnClickListener(v -> goToMainCloset());
+    ivUnselectItems.setOnClickListener(v -> unselectClosetItems());
+    ivDeleteItems.setOnClickListener(v -> deleteClosetItems());
     btnBottomsCategory.setOnClickListener(v -> goToBottomsCategory());
     btnTopsCategory.setOnClickListener((v -> goToTopsCategory()));
 
@@ -180,6 +187,17 @@ public class ClosetFragment extends Fragment {
     ibBackCategory.setVisibility(View.VISIBLE);
 
     currentCategory = getResources().getString(R.string.categories_bottoms);
+  }
+
+  private void deleteClosetItems() {
+
+  }
+
+  private void unselectClosetItems() {
+    for (ClosetItem closetItem : recyclerViewAdapter.getSelected()) {
+      closetItem.setSelected(false);
+      // TODO: Remove highlight
+    }
   }
 
   private void goToMainCloset() {
