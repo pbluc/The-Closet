@@ -58,6 +58,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     .fit()
                     .into(ivClosetItem);
 
+            if (!closetItem.isSelected()) {
+                itemView.setBackgroundResource(0);
+            }
+
             itemView.setOnClickListener(view -> {
                 if (!getSelected().isEmpty()) {
                     closetItem.setSelected(!closetItem.isSelected());

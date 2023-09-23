@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +21,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -48,6 +51,8 @@ public class ClosetFragment extends Fragment {
   private FirebaseFirestore firebaseFirestore;
   private FirebaseStorage firebaseStorage;
   private FirebaseAuth firebaseAuth;
+  private FirebaseUser firebaseUser;
+  private StorageReference storageRef;
 
   private ImageButton ibAddClosetItem;
   private ImageButton ibBackCategory;
@@ -99,6 +104,8 @@ public class ClosetFragment extends Fragment {
     firebaseFirestore = FirebaseFirestore.getInstance();
     firebaseStorage = FirebaseStorage.getInstance();
     firebaseAuth = FirebaseAuth.getInstance();
+    firebaseUser = firebaseAuth.getCurrentUser();
+    storageRef = firebaseStorage.getReference();
 
     currentCategory = getResources().getString(R.string.categories_all);;
 
@@ -138,21 +145,19 @@ public class ClosetFragment extends Fragment {
     btnTopsCategory.setOnClickListener((v -> goToTopsCategory()));
 
     loadClosetItems();
+
+    // TODO: Show unselect and delete closet items buttons only when selected item count is not zero, otherwise disable
   }
 
   private void loadClosetItems() {
-    FirebaseUser user = firebaseAuth.getCurrentUser();
-
-    firebaseFirestore.collection("users").document(user.getEmail()).collection("closet")
+    firebaseFirestore.collection("users").document(firebaseUser.getEmail()).collection("closet")
       .orderBy("timestamp", Query.Direction.ASCENDING)
       .get()
       .addOnSuccessListener(queryDocumentSnapshots -> {
-        StorageReference storageRef = firebaseStorage.getReference();
-
         for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
           Log.d(TAG, documentSnapshot.getId() + " => " + documentSnapshot.getData());
           String imageFilename = (String) documentSnapshot.get("name");
-          storageRef.child(user.getEmail() + "/" + imageFilename).getDownloadUrl()
+          storageRef.child(firebaseUser.getEmail() + "/" + imageFilename).getDownloadUrl()
                   .addOnSuccessListener(uri -> {
                     ClosetItem closetItem = new ClosetItem(documentSnapshot.getId(), imageFilename, "", uri);
                     closetItems.add(0, closetItem);
@@ -190,13 +195,30 @@ public class ClosetFragment extends Fragment {
   }
 
   private void deleteClosetItems() {
+    for (ClosetItem closetItem : recyclerViewAdapter.getSelected()) {
+      firebaseFirestore.collection("users").document(firebaseUser.getEmail()).collection("closet").document(closetItem.getDocumentId())
+              .delete()
+              .addOnSuccessListener(unused -> {
+                Log.d(TAG, "Closet item document successfully deleted!");
 
+                String imageFilename = closetItem.getImageFilename();
+                int removedIndex = closetItems.indexOf(closetItem);
+                closetItems.remove(closetItem);
+                recyclerViewAdapter.notifyItemRemoved(removedIndex);
+
+                storageRef.child(firebaseUser.getEmail() + "/" + imageFilename)
+                        .delete()
+                        .addOnSuccessListener(unused1 -> Log.d(TAG, "Closet item image file successfully deleted!"))
+                        .addOnFailureListener(e -> Log.e(TAG, "Error deleting closet item image file", e));
+              })
+              .addOnFailureListener(e -> Log.e(TAG, "Error deleting document", e));
+    }
   }
 
   private void unselectClosetItems() {
     for (ClosetItem closetItem : recyclerViewAdapter.getSelected()) {
       closetItem.setSelected(false);
-      // TODO: Remove highlight
+      recyclerViewAdapter.notifyItemChanged(closetItems.indexOf(closetItem));
     }
   }
 
@@ -226,7 +248,7 @@ public class ClosetFragment extends Fragment {
 
     if (resultCode == RESULT_OK) {
       if (requestCode == SELECT_IMAGES && data != null) {
-        selectedImageUris = new ArrayList<Uri>();
+        selectedImageUris = new ArrayList<>();
         // Multiple images were selected
         if (data.getClipData() != null) {
           ClipData clipData = data.getClipData();
